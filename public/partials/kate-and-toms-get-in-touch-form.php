@@ -208,7 +208,6 @@ $current_permalink = get_option('siteurl') . $_SERVER['REQUEST_URI'];
             <div class="g-recaptcha" data-sitekey="<?php echo GRCKEY; ?>"></div>
             <br>
             <input type="submit" value="Send enquiry" id="get-intouch-submission" class="submit btn btn-4">
-
         </p>
 
         <p>

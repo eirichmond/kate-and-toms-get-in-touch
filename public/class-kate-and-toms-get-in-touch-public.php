@@ -318,43 +318,8 @@ class Kate_And_Toms_Get_In_Touch_Public {
 	 * @param int    $post_data  the forms post data.
 	 */
 	public function kateandtoms_process_contact_post_callback($post_data) {
-		// Verify reCAPTCHA v3
-		if (!isset($post_data['g-recaptcha-response'])) {
-			wp_die('reCAPTCHA verification failed. Please try again.');
-		}
+		//var_dump($post_data);
 
-		$recaptcha_response = $post_data['g-recaptcha-response'];
-		$verify_url = 'https://www.google.com/recaptcha/api/siteverify';
-		$verify_data = array(
-			'secret' => GRCSECRET,
-			'response' => $recaptcha_response,
-			'remoteip' => $_SERVER['REMOTE_ADDR']
-		);
-
-		$response = wp_remote_post($verify_url, array(
-			'body' => $verify_data,
-			'timeout' => 30
-		));
-		
-		if (is_wp_error($response)) {
-			error_log('reCAPTCHA verification error: ' . $response->get_error_message());
-			wp_die('reCAPTCHA verification failed. Please try again.');
-		}
-
-		$response_body = wp_remote_retrieve_body($response);
-		$result = json_decode($response_body, true);
-
-		if (!isset($result['success']) || !$result['success']) {
-			error_log('reCAPTCHA verification failed: ' . print_r($result, true));
-			wp_die('reCAPTCHA verification failed. Please try again.');
-		}
-
-		if (isset($result['score']) && $result['score'] < 0.5) {
-			error_log('reCAPTCHA score too low: ' . $result['score']);
-			wp_die('reCAPTCHA verification failed. Please try again.');
-		}
-
-		// Existing form processing code continues here
 		$access_token = $this->generate_access_token();
 
 		if(isset($post_data['newsletter-opt-in']) && $post_data['newsletter-opt-in'] != '')  {

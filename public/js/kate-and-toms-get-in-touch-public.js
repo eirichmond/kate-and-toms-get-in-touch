@@ -84,7 +84,6 @@
 		// 	return false;
 		// }
 
-		
 		$('#get-intouch-button').on('click',function(e){
 			$('#ktshouseid').val('');
 		});
