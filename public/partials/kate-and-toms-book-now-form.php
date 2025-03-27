@@ -31,7 +31,7 @@
 
     <form action="/process-booking-forms" method="post" id="kate-and-toms-book-form" class="kate-and-toms-book-form">
 
-    <div class="top_label">Name</div>
+    <div class="top_label">Names</div>
 
     <div class="clearfix">
         <div class="form_object">
@@ -196,7 +196,8 @@
     </div>
 
     <p>
-        <input type="submit" value="Book Now" class="wpcf7-form-control wpcf7-submit btn btn-success">
+        <input type="hidden" name="recaptcha_response" id="recaptchaResponseBookNow">
+        <input type="submit" value="Book Now" class="wpcf7-form-control wpcf7-submit btn btn-success submit">
         <span class="ajax-loader"></span>
     </p>
     <div class="wpcf7-response-output wpcf7-display-none"></div>
