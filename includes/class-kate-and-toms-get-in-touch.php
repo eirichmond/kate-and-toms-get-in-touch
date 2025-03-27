@@ -184,10 +184,6 @@ class Kate_And_Toms_Get_In_Touch {
 		$this->loader->add_action( 'kateandtoms_book_now', $plugin_public, 'kateandtoms_book_now_callback' );
 		$this->loader->add_action( 'kateandtoms_get_in_touch_partners', $plugin_public, 'kateandtoms_get_in_touch_partners_callback' );
 		$this->loader->add_action( 'kateandtoms_process_booking_post', $plugin_public, 'kateandtoms_process_booking_post_callback', 10, 1 );
-		
-		$this->loader->add_action( 'wp_footer', $plugin_public, 'kt_footer_load', 99 );
-
-
 
 	}
 
