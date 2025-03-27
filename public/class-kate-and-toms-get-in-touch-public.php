@@ -109,6 +109,9 @@ class Kate_And_Toms_Get_In_Touch_Public {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/kate-and-toms-get-in-touch-public.js', array( 'jquery' ), $this->version, false );
 
 		wp_localize_script( $this->plugin_name, 'ktsgif_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'nextNonce' => wp_create_nonce( 'wwcc-ktsgif-nonce' ) ) );
+
+		// Enqueue reCAPTCHA script
+		wp_enqueue_script( 'google-recaptcha', 'https://www.google.com/recaptcha/api.js?render=' . GRCKEY, array(), null, true );
 	}
 
 	/**
@@ -624,17 +627,6 @@ class Kate_And_Toms_Get_In_Touch_Public {
 
 		// Don't forget to stop execution afterward.
 		wp_die();
-	}
-
-	/**
-	 * Call recaptcher in the footer
-	 *
-	 * @return void
-	 */
-	public function kt_footer_load() {
-		//if(!is_singular( 'houses' )) {
-			echo '<script async src="https://www.google.com/recaptcha/api.js" defer></script>';
-		//}
 	}
 
 }
