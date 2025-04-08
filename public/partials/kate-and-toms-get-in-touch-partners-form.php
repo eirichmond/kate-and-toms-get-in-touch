@@ -122,7 +122,8 @@ $current_permalink = get_option('siteurl') . $_SERVER['REQUEST_URI'];
             <?php wp_nonce_field( 'process_contact_action', 'process_contact_nonce_field' ); ?>
         </div>
 
-        <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <div class="g-recaptcha" data-sitekey="<?php echo esc_attr( GRCKEY ); ?>"></div>
         <br>
         <input type="submit" value="Submit" id="get-intouch-submission" class="submit btn btn-4">
 

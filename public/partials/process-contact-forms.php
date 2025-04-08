@@ -13,7 +13,7 @@ if ( ! isset( $_POST['process_contact_nonce_field'] ) || ! wp_verify_nonce( $_PO
     }
 
     $secret = GRCSECRET;
-    $key = $_POST["recaptcha_response"];
+    $key = $_POST["g-recaptcha-response"];
 
         // Make the POST request to verify the response
     $verify_url = 'https://www.google.com/recaptcha/api/siteverify';
@@ -23,7 +23,7 @@ if ( ! isset( $_POST['process_contact_nonce_field'] ) || ! wp_verify_nonce( $_PO
 
     $response_data = json_decode( $response );
 
-    if ( $response_data->success && $response_data->score >= 0.5 ) { // we will add a score check after running some logs for a while
+    if ( $response_data->success ) { // we will add a score check after running some logs for a while
         // reCAPTCHA validation successful
         // Proceed with form processing (e.g., send email, store in database)
         if (get_current_blog_id() != 8) {

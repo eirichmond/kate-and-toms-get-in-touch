@@ -196,7 +196,8 @@
     </div>
 
     <p>
-        <input type="hidden" name="recaptcha_response" id="recaptchaResponseBookNow">
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <div class="g-recaptcha" data-sitekey="<?php echo esc_attr( GRCKEY ); ?>"></div>
         <input type="submit" value="Book Now" class="wpcf7-form-control wpcf7-submit btn btn-success submit">
         <span class="ajax-loader"></span>
     </p>

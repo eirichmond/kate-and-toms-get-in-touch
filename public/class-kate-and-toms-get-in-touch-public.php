@@ -327,7 +327,7 @@ class Kate_And_Toms_Get_In_Touch_Public {
 	public function kateandtoms_process_contact_post_callback($post_data) {
 		//var_dump($post_data);
 
-		if ( !isset( $post_data['recaptcha_response'] ) && empty( $post_data['recaptcha_response'] ) ) {
+		if ( !isset( $post_data["g-recaptcha-response"] ) && empty( $post_data["g-recaptcha-response"] ) ) {
 			
 			error_log( 'reCAPTCHA verification failed. Suspected spam before sending to iPro.' );
 			error_log( json_encode( $post_data ) );
@@ -588,7 +588,7 @@ class Kate_And_Toms_Get_In_Touch_Public {
 	 */
 	public function kateandtoms_process_contact_partners_post_callback($post_data) {
 
-		if ( !isset( $post_data['recaptcha_response'] ) && empty( $post_data['recaptcha_response'] ) ) {
+		if ( !isset( $post_data["g-recaptcha-response"] ) && empty( $post_data["g-recaptcha-response"] ) ) {
 			
 			error_log( 'reCAPTCHA verification failed. Suspected spam before sending to iPro.' );
 			error_log( json_encode( $post_data ) );

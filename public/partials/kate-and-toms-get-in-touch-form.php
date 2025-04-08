@@ -204,8 +204,8 @@ $current_permalink = get_option('siteurl') . $_SERVER['REQUEST_URI'];
             <span class="permalink">
                 <input type="hidden" name="permalink" value="<?php echo esc_html($current_permalink); ?>" size="40" class="dynamichidden" aria-invalid="false">
             </span>
-
-            <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+            <div class="g-recaptcha" data-sitekey="<?php echo esc_attr( GRCKEY ); ?>"></div>
             <br>
             <input type="submit" value="Send enquiry" id="get-intouch-submission" class="submit btn btn-4">
         </p>
