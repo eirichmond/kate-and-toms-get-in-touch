@@ -1,9 +1,9 @@
 <?php
-// define('GRCSECRET', '6LeWkOsZAAAAAFkvFDIIIl0gaZ50M6iXZsaPAFhX');
-// define('GRCKEY', '6LeWkOsZAAAAAB_I17SCVfYYhTlTJ5WJHIylopiE');
+define('GRCSECRET', '6LeWkOsZAAAAAFkvFDIIIl0gaZ50M6iXZsaPAFhX');
+define('GRCKEY', '6LeWkOsZAAAAAB_I17SCVfYYhTlTJ5WJHIylopiE');
 // upgraded to v3
-define('GRCSECRET', '6LcJI-YpAAAAAM0tl2YZiD1_37rTIo7yffs687pb');
-define('GRCKEY', '6LcJI-YpAAAAAEEBfpDIdSzHJkJTI4345zr5TeFw');
+// define('GRCSECRET', '6LcJI-YpAAAAAM0tl2YZiD1_37rTIo7yffs687pb');
+// define('GRCKEY', '6LcJI-YpAAAAAEEBfpDIdSzHJkJTI4345zr5TeFw');
 
 
 define('IPRO_API_URL', 'http://booking.kateandtoms.com');
@@ -327,6 +327,15 @@ class Kate_And_Toms_Get_In_Touch_Public {
 	public function kateandtoms_process_contact_post_callback($post_data) {
 		//var_dump($post_data);
 
+		if ( !isset( $post_data['recaptcha_response'] ) && empty( $post_data['recaptcha_response'] ) ) {
+			
+			error_log( 'reCAPTCHA verification failed. Suspected spam before sending to iPro.' );
+			error_log( json_encode( $post_data ) );
+			error_log( json_encode( $_SERVER ) );
+       		wp_die('Not you again!');
+
+		}
+
 		$access_token = $this->generate_access_token();
 
 		if(isset($post_data['newsletter-opt-in']) && $post_data['newsletter-opt-in'] != '')  {
@@ -578,6 +587,16 @@ class Kate_And_Toms_Get_In_Touch_Public {
 	 * @param int    $post_data  the forms post data.
 	 */
 	public function kateandtoms_process_contact_partners_post_callback($post_data) {
+
+		if ( !isset( $post_data['recaptcha_response'] ) && empty( $post_data['recaptcha_response'] ) ) {
+			
+			error_log( 'reCAPTCHA verification failed. Suspected spam before sending to iPro.' );
+			error_log( json_encode( $post_data ) );
+			error_log( json_encode( $_SERVER ) );
+       		wp_die('Not you again!');
+
+		}
+
 
 		$headers[] = 'From: '.$post_data['first-name'].' '.$post_data['last-name'].' <'.$post_data['email-address'].'>';
 

@@ -19,10 +19,10 @@ if ( ! isset( $_POST['booking_select_nonce'] ) || ! wp_verify_nonce( $_POST['boo
 
     $response_data = json_decode( $response );
 
-    if ($response_data->success) { // we will add a score check after running some logs for a while
+    if ( $response_data->success && $response_data->score >= 0.5 ) { // we will add a score check after running some logs for a while
         // reCAPTCHA validation successful
         // Proceed with form processing (e.g., send email, store in database)
-        do_action('kateandtoms_process_booking_post', $_POST);
+        do_action( 'kateandtoms_process_booking_post', $_POST );
 
     } else {
 

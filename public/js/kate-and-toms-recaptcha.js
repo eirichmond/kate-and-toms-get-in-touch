@@ -1,5 +1,6 @@
 (function () {
     const recaptcha = ktrecaptcha_object.key;
+    debugger;
     // Execute reCAPTCHA and get the token
     grecaptcha.ready(function () {
         grecaptcha
