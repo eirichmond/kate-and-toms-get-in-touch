@@ -26,7 +26,6 @@ $current_permalink = get_option('siteurl') . $_SERVER['REQUEST_URI'];
 <form action="/process-contact-forms" method="post" id="kate-and-toms-contact-form" class="kate-and-toms-contact-form" >
 
     <div class="gitwrap">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 
         <div class="top_label">Name</div>
 

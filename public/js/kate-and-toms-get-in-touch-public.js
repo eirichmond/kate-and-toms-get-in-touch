@@ -1,6 +1,7 @@
 (function( $ ) {
 	'use strict';
 
+
 	/**
 	 * All of the code for your public-facing JavaScript source
 	 * should reside in this file.
@@ -88,11 +89,11 @@
 			$('#ktshouseid').val('');
 		});
 
-		var petDetails = document.getElementById('petcon');
-		
 		//numberOfPets.addEventListener('keyup', checkValue);
 
-		$('.number-of-pets input').on('focusout', function(){
+		$(document).on('input', '.number-of-pets input', function(){
+			var petDetails = document.getElementById('petcon');
+			if ( ! petDetails ) return;
 
 			if($(this).val() > 0) {
 				petDetails.style.display = "block";
@@ -101,8 +102,9 @@
 			}
 		});
 
-		$('.number-of-pets-book input').on('focusout', function(){
+		$(document).on('input', '.number-of-pets-book input', function(){
 			var petDetailsBook = document.getElementsByClassName('petcon-book');
+			if ( ! petDetailsBook.length ) return;
 
 			if($(this).val() > 0) {
 				petDetailsBook[0].style.display = "block";

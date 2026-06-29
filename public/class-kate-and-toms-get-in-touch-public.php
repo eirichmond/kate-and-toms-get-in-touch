@@ -1,6 +1,11 @@
 <?php
+//old v2
 define('GRCSECRET', '6LeWkOsZAAAAAFkvFDIIIl0gaZ50M6iXZsaPAFhX');
 define('GRCKEY', '6LeWkOsZAAAAAB_I17SCVfYYhTlTJ5WJHIylopiE');
+
+//new keys v2
+// define('GRCSECRET', '6LcJJBMsAAAAAJQiZevIw-c3ouShFa2cgrwhRCQD');
+// define('GRCKEY', '6LcJJBMsAAAAAMl3a4z0TYG6oye-NkJ5NygWFDTg');
 // upgraded to v3
 // define('GRCSECRET', '6LcJI-YpAAAAAM0tl2YZiD1_37rTIo7yffs687pb');
 // define('GRCKEY', '6LcJI-YpAAAAAEEBfpDIdSzHJkJTI4345zr5TeFw');
@@ -111,10 +116,10 @@ class Kate_And_Toms_Get_In_Touch_Public {
 		wp_localize_script( $this->plugin_name, 'ktsgif_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'nextNonce' => wp_create_nonce( 'wwcc-ktsgif-nonce' ) ) );
 
 		// Enqueue reCAPTCHA script
-		wp_enqueue_script( 'google-recaptcha', 'https://www.google.com/recaptcha/api.js?render=' . GRCKEY, array(), null, false );
+		wp_enqueue_script( 'google-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), null, false );
 		// Enqueue reCAPTCHA script
-		wp_enqueue_script( $this->plugin_name . '-google-recaptcha', plugin_dir_url( __FILE__ ) . 'js/kate-and-toms-recaptcha.js', array(), null, true );
-		wp_localize_script( $this->plugin_name . '-google-recaptcha', 'ktrecaptcha_object', array( 'key' => GRCKEY ) );
+		// wp_enqueue_script( $this->plugin_name . '-google-recaptcha', plugin_dir_url( __FILE__ ) . 'js/kate-and-toms-recaptcha.js', array(), null, true );
+		// wp_localize_script( $this->plugin_name . '-google-recaptcha', 'ktrecaptcha_object', array( 'key' => GRCKEY ) );
 
 	}
 
