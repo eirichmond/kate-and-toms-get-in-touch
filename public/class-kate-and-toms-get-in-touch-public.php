@@ -287,7 +287,11 @@ class Kate_And_Toms_Get_In_Touch_Public {
 
 		$site_id = get_current_blog_id();
 		if($site_id != 11) {
-			$post_id = get_post_meta($post_id, 'availability_site_post_id', true);
+			// this is the old way of getting the property id	
+			// $post_id = get_post_meta($post_id, 'availability_site_post_id', true);
+			
+			// this is the new way of getting the property id
+			$ipro_property_id = get_post_meta($post_id, 'ipro_property_id', true);
 		}
 
 		$access_token = $this->generate_access_token();

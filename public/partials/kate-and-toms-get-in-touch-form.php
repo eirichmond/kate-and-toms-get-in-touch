@@ -12,6 +12,7 @@
  * @subpackage Kate_And_Toms_Get_In_Touch/public/partials
  */
 
+
 $public = new Kate_And_Toms_Get_In_Touch_Public('get in touch', '1.0');
 $quiz = $public->kateandtoms_form_quiz(true);
 $id = get_the_ID();
@@ -185,7 +186,7 @@ $current_permalink = get_option('siteurl') . $_SERVER['REQUEST_URI'];
                     </span>
                 </span>
                 <p></p>
-                <p>See our <a href="https://docs.kateandtoms.com/packs/kateandtoms-privacy-policy2-FEB22.pdf" target="_blank">privacy policy</a> for more information.</p>
+                <p>See our <a href="https://docs.kateandtoms.com/packs/kateandtoms-privacy-policy2-March-24.pdf" target="_blank">privacy policy</a> for more information.</p>
             </span>
 
         </p>
