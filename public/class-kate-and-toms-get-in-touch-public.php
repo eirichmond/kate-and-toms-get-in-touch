@@ -292,6 +292,10 @@ class Kate_And_Toms_Get_In_Touch_Public {
 			
 			// this is the new way of getting the property id
 			$ipro_property_id = get_post_meta($post_id, 'ipro_property_id', true);
+			if($ipro_property_id == '') {
+				$parent_id = get_post_field('post_parent', $post_id);
+				$ipro_property_id = get_post_meta($parent_id, 'ipro_property_id', true);
+			}
 		}
 
 		$access_token = $this->generate_access_token();
