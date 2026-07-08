@@ -293,8 +293,10 @@ class Kate_And_Toms_Get_In_Touch_Public {
 			// this is the new way of getting the property id
 			$ipro_property_id = get_post_meta($post_id, 'ipro_property_id', true);
 			if($ipro_property_id == '') {
-				$parent_id = get_post_field('post_parent', $post_id);
-				$ipro_property_id = get_post_meta($parent_id, 'ipro_property_id', true);
+				$post_id = get_post_field('post_parent', $post_id);
+				error_log('GITT Parent ID: '.$post_id);
+				$ipro_property_id = get_post_meta($post_id, 'ipro_property_id', true);
+				error_log('GITT iPro Property ID: '.$ipro_property_id);
 			}
 		}
 
@@ -362,7 +364,7 @@ class Kate_And_Toms_Get_In_Touch_Public {
 		} else {
 			$property_id = '';
 		}
-		
+		error_log('GITT Property ID: '.$property_id);
 
 		$message = sprintf( __( 'From: %s' ), $post_data['first-name'].' '.$post_data['last-name'].' <'.$post_data['email-address'].'>' . ' Contact number: '. $post_data['contact-number']) . "\r\n\r\n";
 		$message .= sprintf( __( 'Page Name: %s' ), $post_data['title'] ) . "\r\n\r\n";
@@ -411,6 +413,8 @@ class Kate_And_Toms_Get_In_Touch_Public {
 		}
 		$api_url .= '&comments='.urlencode($message);
 		$api_url .= '&createdate='.date('Y-m-d',strtotime('now'));
+
+		error_log('GITT API URL: '.IPRO_API_URL . $api_url);
 
 		$curl = curl_init();
 
