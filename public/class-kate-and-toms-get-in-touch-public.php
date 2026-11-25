@@ -359,6 +359,13 @@ class Kate_And_Toms_Get_In_Touch_Public {
 			$newsletter = '-';
 		}
 
+		// Optional free-text budget (#513). Older cached copies of the form won't send it.
+		$budget = sanitize_text_field( wp_unslash( $post_data['budget'] ?? '' ) );
+		$budget = mb_substr( $budget, 0, 100 );
+		if ( '' === $budget ) {
+			$budget = '-';
+		}
+
 		if(isset($post_data['post_id']) && $post_data['post_id'] != '') {
 			$property_id = $this->ipro_reflookup_callback($post_data['post_id']);
 		} else {
@@ -380,6 +387,7 @@ class Kate_And_Toms_Get_In_Touch_Public {
 		$message .= sprintf( __( 'Age range: %s' ), $post_data['age-range-from'].' - '.$post_data['age-range-to'] ) . "\r\n\r\n";
 		$message .= sprintf( __( 'Checkin: %s' ), date('l, jS F Y',strtotime($post_data['checkin'])) ) . "\r\n\r\n";
 		$message .= sprintf( __( 'Stay Duration: %s' ), $post_data['stay-duration'] ) . "\r\n\r\n";
+		$message .= sprintf( __( 'Budget: %s' ), $budget ) . "\r\n\r\n";
 		$message .= sprintf( __( 'Opt in to receive newsletter: %s' ), $newsletter ) . "\r\n\r\n";
 
 
