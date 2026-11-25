@@ -80,10 +80,10 @@ $current_permalink = get_option('siteurl') . $_SERVER['REQUEST_URI'];
             </span>
         </div>
 
-        <div class="top_label">Budget</div>
+        <div class="top_label">Total budget for your stay</div>
         <div class="form_object">
             <span class="budget">
-                <input type="text" name="budget" value="" size="40" maxlength="100" class="kate-and-toms-contact-form-text-input" aria-required="false" aria-invalid="false" aria-label="Budget" placeholder="Total budget for your stay? E.g. £2,000-£3000">
+                <input type="text" name="budget" value="" size="40" maxlength="100" class="kate-and-toms-contact-form-text-input" aria-required="false" aria-invalid="false" aria-label="Total budget for your stay" placeholder="e.g. £2,000-£3,000">
             </span>
         </div>
 
